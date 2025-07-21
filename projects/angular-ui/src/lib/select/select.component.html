@@ -1,0 +1,29 @@
+<div class="select" [appOutsideClick]="open" (outsideClick)="open = false">
+  <div
+    class="selected pointer flex jc-space ai-center"
+    [ngClass]="{ 'chevron-rotate selected-active': open }"
+    (click)="openCloseSelect()"
+  >
+    <p>{{ selected ? selected : placeholder }}</p>
+    <!--   TODO: icon-->
+  </div>
+
+  <div *ngIf="options" class="options" [ngClass]="{ 'display-none': !open }">
+    <div
+      *ngFor="let option of options"
+      class="pointer flex flex-col gap-15 p-15-px option-hover"
+      (click)="selectValue(option)"
+    >
+      {{ option[label] }}
+    </div>
+  </div>
+  <div
+    *ngIf="emptyMessage"
+    class="options"
+    [ngClass]="{ 'display-none': !open }"
+  >
+    <div class="p-15-px">
+      {{ emptyMessage }}
+    </div>
+  </div>
+</div>

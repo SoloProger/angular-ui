@@ -1,0 +1,11 @@
+<section class="modal-mask" (click)="onOverlayClicked($event)">
+  <div class="modal-container" (click)="onDialogClicked($event)">
+    <div class="heading-3 txt-color-primary flex ai-center jc-space">
+      <h3>{{ title }}</h3>
+      <span class="pointer" (click)="close()">x</span>
+    </div>
+    <div class="modal-body">
+      <ng-template appInsertion></ng-template>
+    </div>
+  </div>
+</section>

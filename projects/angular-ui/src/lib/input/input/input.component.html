@@ -1,0 +1,21 @@
+<div class="float-label">
+  <input
+    [ngClass]="{ 'invalid-input': validation?.invalid }"
+    class="custom-input"
+    [disabled]="disabled"
+    [placeholder]="placeholder"
+    [type]="type"
+    [value]="inputFormValue"
+    (input)="update($event)"
+  />
+  <label class="floating" [ngClass]="{ 'invalid-label': validation?.invalid }">
+    {{ label }}
+  </label>
+</div>
+<div *ngIf="validation?.invalid">
+  <span
+    class="invalid-label mt-2"
+    *ngFor="let error of validation.errors | keyvalue"
+  >{{ getErrorMessage(error) }}</span
+  >
+</div>

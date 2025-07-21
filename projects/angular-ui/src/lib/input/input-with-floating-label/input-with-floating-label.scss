@@ -1,0 +1,41 @@
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.custom-input {
+  background-color: transparent;
+  border-radius: 8px;
+  border: 2px solid #2b2b2e;
+  width: 100%;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+
+  &:focus {
+    outline: none;
+    border: 2px solid #3596fe;
+  }
+}
+
+.input-icon {
+  position: absolute;
+  z-index: 1;
+  top: 22px;
+  left: 15px;
+}
+
+.input-label {
+  color: #bbb;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}

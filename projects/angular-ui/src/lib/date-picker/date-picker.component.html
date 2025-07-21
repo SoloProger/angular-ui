@@ -1,0 +1,27 @@
+<section class="datepicker">
+  <div class="datepicker-wrapper">
+    <div class="datepicker-hr">
+      <div class="datepicker-header">
+        <p>{{ currentMonth.month }} 2024</p>
+        <span class="datepicker-chevrons">
+        </span>
+      </div>
+    </div>
+    <table class="datepicker-table">
+      <thead>
+      <tr>
+        <th *ngFor="let day of days">
+          {{ day }}
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let weeks of getWeeks(currentMonth.days + 1)">
+        <td *ngFor="let day of weeks" [ngClass]="{ today: checkToday(day) }">
+          {{ day }}
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

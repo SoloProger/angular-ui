@@ -1,0 +1,42 @@
+
+.select {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.selected {
+  border-radius: 8px;
+  border: 2px solid #2b2b2e;
+  padding: 15px 20px;
+  font-weight: bold;
+  width: 100%;
+  color: #bbb;
+
+  &-active {
+    outline: none;
+    border: 2px solid #3596fe;
+  }
+}
+
+.chevron-rotate {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.options {
+  position: absolute;
+  color: #fff;
+  overflow: hidden;
+  background-color: #1d1d1e;
+  border: 2px solid #3596fe;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.option-hover:hover {
+  background-color: #363638;
+}

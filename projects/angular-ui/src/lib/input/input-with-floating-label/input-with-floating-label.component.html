@@ -1,0 +1,11 @@
+<div class="input-container">
+  <label class="input-label">{{ label }}</label>
+  <input
+    class="custom-input p-y-16-px p-x-10-px"
+    [disabled]="disabled"
+    [placeholder]="placeholder"
+    [type]="type"
+    [value]="inputFormValue"
+    (input)="update($event)"
+  />
+</div>

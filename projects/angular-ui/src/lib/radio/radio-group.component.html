@@ -1,0 +1,18 @@
+<form
+  class="flex gap-10 w-100"
+  [formGroup]="form"
+  [ngClass]="{ 'flex-col': isColumn }"
+>
+  <ng-container *ngFor="let radio of radioGroup">
+    <input
+      type="radio"
+      class="radio w-100"
+      formControlName="value"
+      [id]="radio.value"
+      [value]="radio.value"
+    />
+    <label class="radio-label w-100" [for]="radio.value">{{
+        radio.label
+      }}</label>
+  </ng-container>
+</form>
