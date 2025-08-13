@@ -1,13 +1,14 @@
 import {
-  ComponentVariant,
+  ComponentVariantType,
   ComponentVariantEnum,
-} from '../types/ComponentVariant';
-import { ComponentType } from '../types/ComponentType';
+} from '../types/component-variant.type';
+import { ComponentTypeType } from '../types/component-type.type';
+import { AttributeBindType } from '../types/attribute-bind.type';
 
 export function componentVariants(
-  componentVariant: ComponentVariant,
-  componentType: ComponentType,
-) {
+  componentVariant: ComponentVariantType,
+  componentType: ComponentTypeType,
+): AttributeBindType {
   let type = '';
   switch (componentVariant) {
     case ComponentVariantEnum.DANGER:

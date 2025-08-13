@@ -13,7 +13,7 @@ import { InsertionDirective } from '../lib/directives/insertion.directive';
 import { DialogRef } from '../lib/utils/dialog-ref';
 
 @Component({
-  selector: 'app-dialog',
+  selector: 'aui-dialog',
   standalone: false,
   templateUrl: './dialog.component.html',
 })

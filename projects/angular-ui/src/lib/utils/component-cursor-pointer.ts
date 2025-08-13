@@ -1,9 +1,10 @@
-import { ComponentType } from '../types/ComponentType';
+import { ComponentTypeType } from '../types/component-type.type';
+import { AttributeBindType } from '../types/attribute-bind.type';
 
 export function componentCursorPointer(
   disabled: boolean,
-  componentType: ComponentType,
-) {
+  componentType: ComponentTypeType,
+): AttributeBindType {
   return !disabled
     ? { [`${componentType}-pointer`]: true }
     : { [`${componentType}-disabled`]: true };

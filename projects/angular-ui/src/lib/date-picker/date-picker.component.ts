@@ -6,7 +6,7 @@ import { range } from './utils/range';
 import { NgClass, NgForOf } from '@angular/common';
 
 @Component({
-  selector: 'app-date-picker',
+  selector: 'aui-date-picker',
   templateUrl: './date-picker.component.html',
   styleUrl: 'date-picker.component.scss',
   imports: [NgClass, NgForOf],

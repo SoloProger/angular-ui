@@ -3,7 +3,7 @@ import { ToastService, ToastText } from './toast.service';
 import { combineLatest } from 'rxjs';
 
 @Component({
-  selector: 'app-toast',
+  selector: 'aui-toast',
   templateUrl: 'toast.component.html',
   standalone: true,
 })

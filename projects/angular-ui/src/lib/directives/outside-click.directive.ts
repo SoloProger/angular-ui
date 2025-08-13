@@ -10,14 +10,14 @@ import {
   Renderer2,
 } from '@angular/core';
 
-@Directive({ selector: '[appOutsideClick]' })
+@Directive({ selector: '[auiOutsideClick]' })
 export class OutsideClickDirective implements OnInit, OnDestroy {
   private renderer = inject(Renderer2);
   private element: ElementRef<HTMLElement> =
     inject<ElementRef<HTMLElement>>(ElementRef);
 
   @Input({ required: true })
-  public appOutsideClick!: boolean;
+  public auiOutsideClick!: boolean;
 
   @Output()
   public outsideClick: EventEmitter<void> = new EventEmitter<void>();

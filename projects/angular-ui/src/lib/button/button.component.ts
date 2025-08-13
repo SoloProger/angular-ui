@@ -7,13 +7,13 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { componentSizes } from '../utils/component-sizes';
-import { ComponentVariant } from '../types/ComponentVariant';
-import { ComponentSize } from '../types/ComponentSize';
+import { ComponentVariantType } from '../types/component-variant.type';
+import { ComponentSizeType } from '../types/component-size.type';
 import { componentVariants } from '../utils/component-variants';
 import { componentCursorPointer } from '../utils/component-cursor-pointer';
 
 @Component({
-  selector: 'app-button',
+  selector: 'aui-button',
   templateUrl: './button.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
@@ -21,7 +21,7 @@ import { componentCursorPointer } from '../utils/component-cursor-pointer';
 })
 export class ButtonComponent {
   @Input()
-  public variant: ComponentVariant = 'secondary';
+  public variant: ComponentVariantType = 'secondary';
 
   @Input()
   public validator = 'button';
@@ -30,7 +30,7 @@ export class ButtonComponent {
   public disabled = false;
 
   @Input()
-  public size: ComponentSize = 'medium';
+  public size: ComponentSizeType = 'medium';
 
   @Input()
   public fill = 'full';

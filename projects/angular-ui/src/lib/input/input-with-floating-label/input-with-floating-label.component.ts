@@ -2,7 +2,7 @@ import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'app-input-with-floating-label',
+  selector: 'aui-input-with-floating-label',
   templateUrl: './input-with-floating-label.component.html',
   styleUrl: './input-with-floating-label.scss',
   providers: [

@@ -20,7 +20,7 @@ import { RadioGroup, RadioGroupControl } from './types/radio-group';
 import { NgClass, NgForOf } from '@angular/common';
 
 @Component({
-  selector: 'app-radio-group',
+  selector: 'aui-radio-group',
   templateUrl: './radio-group.component.html',
   styleUrl: './radio-group.component.scss',
   providers: [

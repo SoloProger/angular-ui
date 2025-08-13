@@ -1,4 +1,4 @@
-export type ComponentVariant = 'danger' | 'secondary' | 'primary';
+export type ComponentVariantType = 'danger' | 'secondary' | 'primary';
 
 export enum ComponentVariantEnum {
   DANGER = 'danger',

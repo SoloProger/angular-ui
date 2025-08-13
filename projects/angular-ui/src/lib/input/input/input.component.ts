@@ -10,7 +10,7 @@ enum FormValidationMessages {
 }
 
 @Component({
-  selector: 'app-input',
+  selector: 'aui-input',
   templateUrl: './input.component.html',
   styleUrl: './input.component.scss',
   providers: [

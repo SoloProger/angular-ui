@@ -5,7 +5,7 @@ import { OutsideClickDirective } from '../directives/outside-click.directive';
 import { NgClass, NgForOf, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-select',
+  selector: 'aui-select',
   templateUrl: './select.component.html',
   styleUrl: './select.component.scss',
   providers: [

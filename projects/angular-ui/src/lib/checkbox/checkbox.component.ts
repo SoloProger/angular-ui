@@ -2,7 +2,7 @@ import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'app-checkbox',
+  selector: 'aui-checkbox',
   templateUrl: './checkbox.component.html',
   styleUrl: './checkbox.component.scss',
   providers: [

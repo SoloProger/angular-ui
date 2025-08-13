@@ -1,4 +1,4 @@
-export type ComponentSize = 'small' | 'medium' | 'large';
+export type ComponentSizeType = 'small' | 'medium' | 'large';
 
 export enum ComponentSizeEnum {
   SMALL = 'small',

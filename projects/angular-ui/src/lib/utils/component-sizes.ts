@@ -1,10 +1,14 @@
-import { ComponentSize, ComponentSizeEnum } from '../types/ComponentSize';
-import { ComponentType } from '../types/ComponentType';
+import {
+  ComponentSizeType,
+  ComponentSizeEnum,
+} from '../types/component-size.type';
+import { ComponentTypeType } from '../types/component-type.type';
+import { AttributeBindType } from '../types/attribute-bind.type';
 
 export function componentSizes(
-  componentSize: ComponentSize,
-  componentType: ComponentType,
-) {
+  componentSize: ComponentSizeType,
+  componentType: ComponentTypeType,
+): AttributeBindType {
   let size = '';
   switch (componentSize) {
     case ComponentSizeEnum.SMALL:

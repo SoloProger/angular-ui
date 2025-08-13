@@ -9,7 +9,7 @@ enum FormValidationMessages {
 }
 
 @Component({
-  selector: 'app-textarea',
+  selector: 'aui-textarea',
   templateUrl: './textarea.component.html',
   styleUrl: './textarea.component.scss',
   providers: [
