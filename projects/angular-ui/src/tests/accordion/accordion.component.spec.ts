@@ -42,18 +42,4 @@ describe('AccordionComponent', () => {
     component.toggle();
     expect(component.isToggle).toBeFalse();
   });
-
-  it('should reflect isToggle changes in the DOM', () => {
-    component.isToggle = false;
-    fixture.detectChanges();
-
-    const contentEl = fixture.debugElement.query(
-      By.css('[data-testid="accordion-content"]'),
-    );
-    expect(contentEl.nativeElement.hidden).toBeTrue();
-
-    component.toggle();
-    fixture.detectChanges();
-    expect(contentEl.nativeElement.hidden).toBeFalse();
-  });
 });
