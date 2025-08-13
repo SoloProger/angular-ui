@@ -6,6 +6,7 @@
     "start": "ng serve demo-ui",
     "lib:build": "ng build angular-ui",
     "lib:watch": "ng build angular-ui --watch --configuration development",
+    "lib:publish": "cd dist/angular-ui && npm publish --access public",
     "test": "ng test --no-watch --no-progress --browsers=ChromeHeadless",
     "lint": "ng lint",
     "lint:fix": "eslint . --ext .ts,.html --fix",
