@@ -1,12 +1,12 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
-interface ToastText {
+export interface ToastText {
   heading: string;
   message: string;
 }
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class ToastService {
   private _show$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   private _message$: BehaviorSubject<ToastText> =

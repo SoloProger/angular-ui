@@ -1,18 +1,15 @@
-import {Component} from '@angular/core';
-import {ControlValueAccessor} from '@angular/forms';
-import {calendar, days} from './constants/calendar';
-import {chunk} from './utils/chunk';
-import {range} from './utils/range';
-import {NgClass, NgForOf} from '@angular/common';
+import { Component } from '@angular/core';
+import { ControlValueAccessor } from '@angular/forms';
+import { calendar, days } from './constants/calendar';
+import { chunk } from './utils/chunk';
+import { range } from './utils/range';
+import { NgClass, NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-date-picker',
   templateUrl: './date-picker.component.html',
   styleUrl: 'date-picker.component.scss',
-  imports: [
-    NgClass,
-    NgForOf
-  ]
+  imports: [NgClass, NgForOf],
 })
 export class DatePickerComponent implements ControlValueAccessor {
   public currentDay = this.toDay();
@@ -23,21 +20,19 @@ export class DatePickerComponent implements ControlValueAccessor {
 
   public isDisabled = false;
 
-  public onChange = (date: unknown) => {
-  };
+  public onChange = (date: unknown) => {};
 
-  public onTouch = () => {
-  };
+  public onTouch = () => {};
 
   public writeValue(date: unknown): void {
     this.date = date;
   }
 
-  public registerOnChange(fn: any): void {
+  public registerOnChange(fn: () => void): void {
     this.onChange = fn;
   }
 
-  public registerOnTouched(fn: any): void {
+  public registerOnTouched(fn: () => void): void {
     this.onChange(fn);
   }
 

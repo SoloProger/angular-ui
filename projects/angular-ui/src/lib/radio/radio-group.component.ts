@@ -3,6 +3,7 @@ import {
   Component,
   DestroyRef,
   forwardRef,
+  inject,
   Input,
   OnInit,
 } from '@angular/core';
@@ -11,11 +12,12 @@ import {
   ControlValueAccessor,
   FormControl,
   FormGroup,
-  NG_VALUE_ACCESSOR, ReactiveFormsModule,
+  NG_VALUE_ACCESSOR,
+  ReactiveFormsModule,
 } from '@angular/forms';
 import { debounceTime, tap } from 'rxjs';
 import { RadioGroup, RadioGroupControl } from './types/radio-group';
-import {NgClass, NgForOf} from '@angular/common';
+import { NgClass, NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-radio-group',
@@ -29,13 +31,11 @@ import {NgClass, NgForOf} from '@angular/common';
     },
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    ReactiveFormsModule,
-    NgClass,
-    NgForOf
-  ]
+  imports: [ReactiveFormsModule, NgClass, NgForOf],
 })
 export class RadioGroupComponent implements ControlValueAccessor, OnInit {
+  private destroyRef = inject(DestroyRef);
+
   @Input({ required: true })
   public radioGroup: RadioGroup[] = [];
 
@@ -50,8 +50,6 @@ export class RadioGroupComponent implements ControlValueAccessor, OnInit {
     value: new FormControl<string>(''),
   });
 
-  constructor(private readonly destroyRef: DestroyRef) {}
-
   ngOnInit(): void {
     this.form.valueChanges
       .pipe(
@@ -62,19 +60,19 @@ export class RadioGroupComponent implements ControlValueAccessor, OnInit {
       .subscribe();
   }
 
-  registerOnChange(fn: (value: unknown) => void): void {
+  public registerOnChange(fn: (value: unknown) => void): void {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: () => void): void {
+  public registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {
+  public setDisabledState(isDisabled: boolean): void {
     isDisabled ? this.form.disable() : this.form.enable();
   }
 
-  writeValue(value: string): void {
+  public writeValue(value: string): void {
     this.form.patchValue({ value }, { emitEvent: false });
   }
 }

@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {ToastService} from './toast.service';
-import {combineLatest} from 'rxjs';
+import { Component, inject, OnInit } from '@angular/core';
+import { ToastService, ToastText } from './toast.service';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-toast',
@@ -9,15 +9,14 @@ import {combineLatest} from 'rxjs';
 })
 export class ToastComponent implements OnInit {
   public isShow: boolean = false;
-  public message: any = null;
+  public message: ToastText | null = null;
 
-  constructor(private toastService: ToastService) {
-  }
+  private toastService = inject(ToastService);
 
   ngOnInit() {
     combineLatest(
       this.toastService.show$,
-      this.toastService.message$
+      this.toastService.message$,
     ).subscribe(([show, message]) => {
       this.isShow = show;
       this.message = message;

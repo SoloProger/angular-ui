@@ -1,5 +1,5 @@
-import {Component, forwardRef, Input} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import { Component, forwardRef, Input } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-input-with-floating-label',
@@ -25,11 +25,9 @@ export class InputWithFloatingLabelComponent implements ControlValueAccessor {
 
   public inputFormValue: string = '';
 
-  public onChange = (inputFormValue: string) => {
-  };
+  public onChange = (inputFormValue: string) => {};
 
-  public onTouched = () => {
-  };
+  public onTouched = () => {};
 
   public touched = false;
 
@@ -39,11 +37,11 @@ export class InputWithFloatingLabelComponent implements ControlValueAccessor {
     this.inputFormValue = inputFormValue;
   }
 
-  public registerOnChange(onChange: any): void {
+  public registerOnChange(onChange: () => void): void {
     this.onChange = onChange;
   }
 
-  public registerOnTouched(onTouched: any): void {
+  public registerOnTouched(onTouched: () => void): void {
     this.onTouched = onTouched;
   }
 

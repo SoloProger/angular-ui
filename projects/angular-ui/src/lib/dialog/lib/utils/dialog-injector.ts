@@ -1,24 +1,27 @@
-import { Inject, InjectionToken, Injector, Type } from '@angular/core';
+import { InjectionToken, Injector, Type } from '@angular/core';
+
+type Token<T> = Type<T> | InjectionToken<T>;
 
 export class DialogInjector implements Injector {
-  constructor(
-    private _parentInjector: Injector,
-    private _additionalTokens: WeakMap<any, any>,
+  private constructor(
+    private readonly _parentInjector: Injector,
+    private readonly _additionalTokens: WeakMap<Token<unknown>, unknown>,
   ) {}
 
-  public get<T>(
-    token: Type<T> | InjectionToken<T>,
-    notFoundValue?: T,
-    flags?: Inject,
-  ): T;
+  public static create(
+    parentInjector: Injector,
+    additionalTokens?: WeakMap<Token<unknown>, unknown>,
+  ): DialogInjector {
+    return new DialogInjector(
+      parentInjector,
+      additionalTokens ?? new WeakMap(),
+    );
+  }
 
-  public get(token: any, notFoundValue?: any): any;
-
-  public get(token: any, notFoundValue?: any, flags?: any) {
-    const value = this._additionalTokens.get(token);
-
-    if (value) return value;
-
-    return this._parentInjector.get<any>(token, notFoundValue);
+  public get<T>(token: Token<T>, notFoundValue?: T): T {
+    if (this._additionalTokens.has(token)) {
+      return this._additionalTokens.get(token) as T;
+    }
+    return this._parentInjector.get(token, notFoundValue);
   }
 }

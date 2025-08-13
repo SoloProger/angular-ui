@@ -1,4 +1,4 @@
-.btn {
+.button {
   background-color: #1d1d1e;
   font-size: 16px;
   padding: 14px 28px;
@@ -9,39 +9,37 @@
   border-radius: 8px;
   width: 100%;
 
-  &--small {
-    .btn {
+  &-small {
+    .button {
       padding: 6px 16px;
     }
   }
 
-  &--primary {
-    .btn {
+  &-primary {
+    .button {
       background-color: #3596fe;
       border: 2px solid #3596fe;
     }
   }
 
-  &--danger {
-    .btn {
+  &-danger {
+    .button {
       background-color: #fe3535;
       border: 2px solid #fe3535;
     }
   }
 
-  &--pointer {
-    .btn {
+  &-pointer {
+    .button {
       cursor: pointer;
     }
   }
 
-  &--disabled {
-    .btn {
+  &-disabled {
+    .button {
       background-color: #1d1d1e;
       border: 2px solid #2b2b2e;
       color: #2b2b2e;
     }
   }
 }
-
-

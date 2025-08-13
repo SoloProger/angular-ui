@@ -1,12 +1,10 @@
-import {Component, Input} from '@angular/core';
-import {NgIf} from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-accordion[title]',
   templateUrl: 'accordion.component.html',
-  imports: [
-    NgIf
-  ]
+  imports: [NgIf],
 })
 export class AccordionComponent {
   @Input()

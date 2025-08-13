@@ -1,6 +1,6 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import {KeyValuePipe, NgClass, NgForOf, NgIf} from '@angular/common';
+import { KeyValuePipe, NgClass, NgForOf, NgIf } from '@angular/common';
 
 enum FormValidationMessages {
   required = 'Обязательное поле',
@@ -19,12 +19,7 @@ enum FormValidationMessages {
       useExisting: forwardRef(() => TextareaComponent),
     },
   ],
-  imports: [
-    NgClass,
-    KeyValuePipe,
-    NgIf,
-    NgForOf
-  ]
+  imports: [NgClass, KeyValuePipe, NgIf, NgForOf],
 })
 export class TextareaComponent implements ControlValueAccessor {
   @Input()
@@ -37,7 +32,7 @@ export class TextareaComponent implements ControlValueAccessor {
   public placeholder: string = '';
 
   @Input()
-  public validation?: any;
+  public validation?: unknown;
 
   @Input()
   public rows: number = 10;
@@ -57,11 +52,11 @@ export class TextareaComponent implements ControlValueAccessor {
     this.inputFormValue = inputFormValue;
   }
 
-  public registerOnChange(onChange: any): void {
+  public registerOnChange(onChange: () => void): void {
     this.onChange = onChange;
   }
 
-  public registerOnTouched(onTouched: any): void {
+  public registerOnTouched(onTouched: () => void): void {
     this.onTouched = onTouched;
   }
 
@@ -76,7 +71,7 @@ export class TextareaComponent implements ControlValueAccessor {
     this.onTouched();
   }
 
-  public getErrorMessage(error: unknown) {
+  public getErrorMessage(error: unknown): string {
     const errorMessage =
       FormValidationMessages[
         (error as { key: string }).key as keyof typeof FormValidationMessages
@@ -86,9 +81,7 @@ export class TextareaComponent implements ControlValueAccessor {
       (error as { key: string }).key === 'minlength' ||
       (error as { key: string }).key === 'maxlength'
     ) {
-      return `${errorMessage}: ${
-        (error as { key: string; value: any }).value?.requiredLength
-      }`;
+      return `${errorMessage}`;
     }
 
     return errorMessage;

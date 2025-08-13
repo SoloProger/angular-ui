@@ -3,26 +3,26 @@ import {
   ComponentRef,
   createComponent,
   EmbeddedViewRef,
+  inject,
   Injectable,
   Injector,
   Type,
 } from '@angular/core';
-import {DialogConfig} from '../lib/configs/dialog.config';
-import {DialogInjector} from '../lib/utils/dialog-injector';
-import {DialogRef} from '../lib/utils/dialog-ref';
-import {DialogComponent} from '../ui/dialog.component';
+import { DialogConfig } from '../lib/configs/dialog.config';
+import { DialogInjector } from '../lib/utils/dialog-injector';
+import { DialogRef } from '../lib/utils/dialog-ref';
+import { DialogComponent } from '../ui/dialog.component';
 
 @Injectable()
 export class DialogService {
-  private componentRef!: ComponentRef<DialogComponent>;
+  private componentRef!: ComponentRef<DialogComponent<unknown>>;
+  private appRef: ApplicationRef = inject(ApplicationRef);
+  private injector: Injector = inject(Injector);
 
-  constructor(
-    private appRef: ApplicationRef,
-    private injector: Injector,
-  ) {
-  }
-
-  public openDialog(componentType: Type<any>, config: DialogConfig): DialogRef {
+  public openDialog(
+    componentType: Type<never>,
+    config: DialogConfig,
+  ): DialogRef {
     const dialogRef = this.appendDialogComponentToBody(config);
 
     this.componentRef.instance.childComponentType = componentType;
@@ -48,12 +48,12 @@ export class DialogService {
 
     const componentRef = createComponent(DialogComponent, {
       environmentInjector: this.appRef.injector,
-      elementInjector: new DialogInjector(this.injector, map),
+      elementInjector: DialogInjector.create(this.injector, map),
     });
 
     this.appRef.attachView(componentRef.hostView);
 
-    const domElement = (componentRef.hostView as EmbeddedViewRef<any>)
+    const domElement = (componentRef.hostView as EmbeddedViewRef<never>)
       .rootNodes[0] as HTMLElement;
 
     document.body.appendChild(domElement);

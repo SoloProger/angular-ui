@@ -1,8 +1,8 @@
-import {Component, forwardRef, Input} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {Option} from './types/option';
-import {OutsideClickDirective} from '../directives/outside-click.directive';
-import {NgClass, NgForOf, NgIf} from '@angular/common';
+import { Component, forwardRef, Input } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Option } from './types/option';
+import { OutsideClickDirective } from '../directives/outside-click.directive';
+import { NgClass, NgForOf, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-select',
@@ -15,18 +15,13 @@ import {NgClass, NgForOf, NgIf} from '@angular/common';
       useExisting: forwardRef(() => SelectComponent),
     },
   ],
-  imports: [
-    OutsideClickDirective,
-    NgClass,
-    NgIf,
-    NgForOf,
-  ]
+  imports: [OutsideClickDirective, NgClass, NgIf, NgForOf],
 })
 export class SelectComponent implements ControlValueAccessor {
-  @Input({required: true})
+  @Input({ required: true })
   public options!: Option[];
 
-  @Input({required: true})
+  @Input({ required: true })
   public label!: string;
 
   @Input()
@@ -39,29 +34,21 @@ export class SelectComponent implements ControlValueAccessor {
 
   public selected: string = '';
 
-  public onChange = (selected: string) => {
-  };
+  public onChange = (selected: string) => {};
 
-  public onTouched = () => {
-  };
+  public onTouched = () => {};
 
   public disabled = false;
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
 
   public writeValue(selected: string): void {
     this.selected = selected;
   }
 
-  public registerOnChange(fn: any): void {
+  public registerOnChange(fn: () => void): void {
     this.onChange = fn;
   }
 
-  public registerOnTouched(fn: any): void {
+  public registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
   }
 
@@ -69,14 +56,14 @@ export class SelectComponent implements ControlValueAccessor {
     this.disabled = isDisabled;
   }
 
-  public selectValue(option: any) {
+  public selectValue(option: Option): void {
     this.selected = option[this.label];
     this.open = false;
-    this.onChange(option.value);
+    this.onChange(option['value']);
     this.onTouched();
   }
 
-  public openCloseSelect() {
+  public openCloseSelect(): void {
     this.open = !this.open;
   }
 }

@@ -6,6 +6,11 @@ import {
   Input,
   ViewEncapsulation,
 } from '@angular/core';
+import { componentSizes } from '../utils/component-sizes';
+import { ComponentVariant } from '../types/ComponentVariant';
+import { ComponentSize } from '../types/ComponentSize';
+import { componentVariants } from '../utils/component-variants';
+import { componentCursorPointer } from '../utils/component-cursor-pointer';
 
 @Component({
   selector: 'app-button',
@@ -16,7 +21,7 @@ import {
 })
 export class ButtonComponent {
   @Input()
-  public type = 'regular';
+  public variant: ComponentVariant = 'secondary';
 
   @Input()
   public validator = 'button';
@@ -25,56 +30,24 @@ export class ButtonComponent {
   public disabled = false;
 
   @Input()
-  public size = 'regular';
+  public size: ComponentSize = 'medium';
 
   @Input()
   public fill = 'full';
 
   @HostBinding('class')
   public get btnClass() {
-    return { ...this.btnSize(), ...this.btnType(), ...this.btnFill(), ...this.setCursorPointer() };
-  }
-
-  public btnSize() {
-    let _size = '';
-    switch (this.size) {
-      case 'small':
-        _size = 'btn--small';
-        break;
-      case 'regular':
-        _size = '';
-        break;
-      case 'large':
-        _size = '';
-        break;
-    }
-    return { [_size]: true };
-  }
-
-  public btnType() {
-    let _type = '';
-    switch (this.type) {
-      case 'regular':
-        _type = '';
-        break;
-      case 'primary':
-        _type = 'btn--primary';
-        break;
-      case 'danger':
-        _type = 'btn--danger';
-        break;
-    }
-    return { [_type]: true };
+    return {
+      ...componentSizes(this.size, 'button'),
+      ...componentVariants(this.variant, 'button'),
+      ...this.btnFill(),
+      ...componentCursorPointer(this.disabled, 'button'),
+    };
   }
 
   public btnFill() {
     return this.fill === 'full' && !this.disabled
       ? { ['']: true }
       : { ['bg-transparent']: true };
-  }
-
-  public setCursorPointer() {
-    console.log(this.disabled);
-    return !this.disabled ? { ['btn--pointer']: true } : { ['btn--disabled']: true };
   }
 }

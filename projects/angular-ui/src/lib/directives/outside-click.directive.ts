@@ -2,6 +2,7 @@ import {
   Directive,
   ElementRef,
   EventEmitter,
+  inject,
   Input,
   OnDestroy,
   OnInit,
@@ -9,37 +10,35 @@ import {
   Renderer2,
 } from '@angular/core';
 
-@Directive({selector: '[appOutsideClick]'})
+@Directive({ selector: '[appOutsideClick]' })
 export class OutsideClickDirective implements OnInit, OnDestroy {
-  @Input({required: true})
+  private renderer = inject(Renderer2);
+  private element: ElementRef<HTMLElement> =
+    inject<ElementRef<HTMLElement>>(ElementRef);
+
+  @Input({ required: true })
   public appOutsideClick!: boolean;
 
   @Output()
-  public outsideClick: EventEmitter<void> = new EventEmitter();
-
-  constructor(
-    private renderer: Renderer2,
-    private element: ElementRef,
-  ) {
-  }
+  public outsideClick: EventEmitter<void> = new EventEmitter<void>();
 
   private listener?: () => void;
-
-  public documentClick(event: Event) {
-    if (
-      this?.element &&
-      !this.element.nativeElement.parentElement.contains(event.target)
-    ) {
-      this.outsideClick.emit();
-    }
-  }
 
   ngOnInit(): void {
     this.listener = this.renderer.listen(
       'document',
       'click',
-      this.documentClick,
+      this.documentClick.bind(this),
     );
+  }
+
+  public documentClick(event: Event): void {
+    const parent = this.element.nativeElement.parentElement;
+    const target = event.target as Node;
+
+    if (parent && parent.contains(target)) {
+      this.outsideClick.emit();
+    }
   }
 
   ngOnDestroy(): void {

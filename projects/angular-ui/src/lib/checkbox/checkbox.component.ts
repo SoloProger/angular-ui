@@ -31,11 +31,11 @@ export class CheckboxComponent implements ControlValueAccessor {
     this.inputFormValue = inputFormValue;
   }
 
-  public registerOnChange(onChange: any): void {
+  public registerOnChange(onChange: () => void): void {
     this.onChange = onChange;
   }
 
-  public registerOnTouched(onTouched: any): void {
+  public registerOnTouched(onTouched: () => void): void {
     this.onTouched = onTouched;
   }
 

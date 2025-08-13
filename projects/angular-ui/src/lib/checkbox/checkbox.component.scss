@@ -1,4 +1,3 @@
-
 .checkbox {
   display: flex;
 }
@@ -56,7 +55,6 @@
 }
 
 .checkbox-control:focus + label::before {
-
 }
 
 .checkbox-control:focus:not(:checked) + label::before {

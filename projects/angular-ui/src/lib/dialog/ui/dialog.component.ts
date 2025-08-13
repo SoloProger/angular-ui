@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   ComponentRef,
+  inject,
   OnDestroy,
   Type,
   ViewChild,
@@ -16,27 +17,25 @@ import { DialogRef } from '../lib/utils/dialog-ref';
   standalone: false,
   templateUrl: './dialog.component.html',
 })
-export class DialogComponent implements AfterViewInit, OnDestroy {
-  public componentRef!: ComponentRef<any>;
-  public childComponentType!: Type<any>;
+export class DialogComponent<T> implements AfterViewInit, OnDestroy {
+  private cd: ChangeDetectorRef = inject(ChangeDetectorRef);
+  private dialogRef: DialogRef = inject(DialogRef);
 
-  @ViewChild(InsertionDirective) insertionPoint!: InsertionDirective;
+  public componentRef!: ComponentRef<T>;
+  public childComponentType!: Type<T>;
 
-  private readonly _onClose = new Subject<any>();
+  @ViewChild(InsertionDirective) public insertionPoint!: InsertionDirective;
+
+  private readonly _onClose = new Subject<T | null>();
   public onClose = this._onClose.asObservable();
   public title!: string;
-
-  constructor(
-    private cd: ChangeDetectorRef,
-    private dialogRef: DialogRef,
-  ) {}
 
   ngAfterViewInit(): void {
     this.loadChildComponent(this.childComponentType);
     this.cd.detectChanges();
   }
 
-  public loadChildComponent(componentType: Type<any>): void {
+  public loadChildComponent(componentType: Type<T>): void {
     const viewContainerRef = this.insertionPoint.viewContainerRef;
     viewContainerRef.clear();
 

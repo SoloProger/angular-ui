@@ -24,7 +24,17 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "tsConfig": "projects/angular-ui/tsconfig.spec.json"
+            "tsConfig": "projects/angular-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-ui/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/angular-ui/src/**/*.ts",
+              "projects/angular-ui/src/**/*.html"
+            ]
           }
         }
       }
@@ -115,6 +125,16 @@
             ],
             "styles": [
               "projects/demo-ui/src/styles.scss"
+            ],
+            "karmaConfig": "projects/demo-ui/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/demo-ui/src/**/*.ts",
+              "projects/demo-ui/src/**/*.html"
             ]
           }
         }

@@ -1,0 +1,11 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "Running autofix for changed files..."
+npx lint-staged
+
+echo "Running full lint..."
+npx ng lint
+
+#echo "Running tests..."
+#npx ng test --no-watch --no-progress --browsers=ChromeHeadless
