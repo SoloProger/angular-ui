@@ -7,5 +7,5 @@ npx lint-staged
 echo "Running full lint..."
 npx ng lint
 
-#echo "Running tests..."
-#npx ng test --no-watch --no-progress --browsers=ChromeHeadless
+echo "Running tests..."
+npx ng test --no-watch --no-progress --browsers=ChromeHeadless
