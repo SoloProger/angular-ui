@@ -1,63 +1,47 @@
-# AngularUi
+# Angular UI
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.0.
+A reusable Angular UI library providing components, directives, and services to accelerate your Angular application development.
 
-## Code scaffolding
+## Features
+- Modular Angular components
+- Reusable directives
+- Fully typed services
+- Compatible with Angular 16+
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Installation
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the library, run:
+Install via npm:
 
 ```bash
-ng build angular-ui
+npm install @solo_proger/angular-ui
 ```
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
+## Usage
 
-### Publishing the Library
+Import component or module in your Angular application:
 
-Once the project is built, you can publish your library by following these steps:
+```ts
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
+import { ButtonComponent } from '@solo_proger/angular-ui';
 
-1. Navigate to the `dist` directory:
-   ```bash
-   cd dist/angular-ui
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, ButtonComponent],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
 ```
 
-## Running end-to-end tests
+Use the components in your templates:
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
+```html
+<app-button>Click Me</app-button>
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Contributing
+Contributions are welcome! Please fork the repository and submit a pull request.
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## License
+MIT License

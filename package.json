@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve demo-ui",
-    "build": "ng build",
-    "watch": "ng build angular-ui --watch --configuration development",
+    "lib:build": "ng build angular-ui",
+    "lib:watch": "ng build angular-ui --watch --configuration development",
     "test": "ng test --no-watch --no-progress --browsers=ChromeHeadless",
     "lint": "ng lint",
     "lint:fix": "eslint . --ext .ts,.html --fix",
