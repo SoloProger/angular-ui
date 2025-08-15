@@ -62,7 +62,8 @@
               "ngAfterViewInit",
               "ngAfterViewChecked",
               "ngAfterContentInit",
-              "ngAfterContentChecked"
+              "ngAfterContentChecked",
+              "constructor"
             ]
           }
         ],
@@ -88,7 +89,7 @@
           "always"
         ],
         "no-console": [
-          "warn",
+          "error",
           {
             "allow": [
               "warn",
@@ -115,5 +116,8 @@
         "@angular-eslint/template/eqeqeq": "error"
       }
     }
+  ],
+  "extends": [
+    "plugin:storybook/recommended"
   ]
 }

@@ -1,1 +1,1 @@
-export type ComponentTypeType = 'input' | 'button';
+export type ComponentTypeType = 'aui-input' | 'aui-button';

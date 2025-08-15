@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve demo-ui",
     "lib:build": "ng build angular-ui",
     "lib:watch": "ng build angular-ui --watch --configuration development",
     "lib:publish": "cd dist/angular-ui && npm publish --access public",
@@ -11,7 +10,9 @@
     "lint": "ng lint",
     "lint:fix": "eslint . --ext .ts,.html --fix",
     "format": "prettier --write \"**/*.{ts,html,scss}\"",
-    "prepare": "husky"
+    "prepare": "husky",
+    "storybook": "ng run angular-ui:storybook",
+    "build-storybook": "ng run angular-ui:build-storybook"
   },
   "lint-staged": {
     "*.{ts,html}": [
@@ -46,6 +47,7 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "^20.1.6",
     "@angular-eslint/builder": "20.1.1",
     "@angular-eslint/eslint-plugin": "20.1.1",
     "@angular-eslint/eslint-plugin-template": "20.1.1",
@@ -54,6 +56,8 @@
     "@angular/build": "^20.1.1",
     "@angular/cli": "^20.1.1",
     "@angular/compiler-cli": "^20.1.0",
+    "@storybook/addon-docs": "^9.1.2",
+    "@storybook/angular": "^9.1.2",
     "@types/jasmine": "~5.1.0",
     "@typescript-eslint/eslint-plugin": "7.11.0",
     "@typescript-eslint/parser": "7.11.0",
@@ -61,6 +65,7 @@
     "eslint": "8.57.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-storybook": "^9.1.2",
     "husky": "^9.1.7",
     "jasmine-core": "~5.8.0",
     "karma": "~6.4.0",
@@ -72,6 +77,7 @@
     "ng-packagr": "^20.1.0",
     "prettier": "^3.6.2",
     "puppeteer": "^24.16.1",
+    "storybook": "^9.1.2",
     "typescript": "~5.8.2"
   }
 }

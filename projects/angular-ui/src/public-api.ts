@@ -17,3 +17,5 @@ export * from './lib/radio/radio-group.component';
 export * from './lib/select/select.component';
 export * from './lib/textarea/textarea.component';
 export * from './lib/toast/toast.component';
+export * from './lib/sidebar/aui-sidebar.component';
+export * from './lib/list/aui-list.component';

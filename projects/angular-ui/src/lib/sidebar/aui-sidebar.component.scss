@@ -1,0 +1,45 @@
+@use "@solo_proger/styleslib/styles/index.scss" as *;
+
+.aui-sidebar-container {
+  display: flex;
+  width: 100%;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+.aui-sidebar {
+  width: 100%;
+  background-color: var(--aui-sidebar-bg);
+  border-radius: 4px;
+
+  @include device(phone) {
+    display: none;
+  }
+
+  @include device(table) {
+    display: none;
+  }
+}
+
+.aui-sidebar-open {
+  max-width: 350px;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.aui-sidebar-close {
+  max-width: 90px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.aui-sidebar-open-close-icon {
+  cursor: pointer;
+}
+
+.aui-sidebar-content {
+  width: 100%;
+}

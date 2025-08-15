@@ -1,0 +1,11 @@
+<div class="aui-list-container">
+  @if (elements()) {
+    <ul class="aui-list">
+      @for (element of elements(); track $index) {
+        <li class="aui-list-item">
+          {{ element | auiListParse: renderElement() }}
+        </li>
+      }
+    </ul>
+  }
+</div>

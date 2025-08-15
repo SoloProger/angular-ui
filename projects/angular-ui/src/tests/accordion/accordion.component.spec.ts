@@ -22,7 +22,7 @@ describe('AccordionComponent', () => {
   });
 
   it('should render the title', () => {
-    component.title = 'Test Accordion';
+    fixture.componentRef.setInput('title', 'Test Accordion');
     fixture.detectChanges();
 
     const titleEl = fixture.debugElement.query(
@@ -32,14 +32,14 @@ describe('AccordionComponent', () => {
   });
 
   it('should have default isToggle false', () => {
-    expect(component.isToggle).toBeFalse();
+    expect(component.isOpen()).toBeFalse();
   });
 
   it('should toggle isToggle when toggle() is called', () => {
-    expect(component.isToggle).toBeFalse();
+    expect(component.openCloseToggle()).toBeFalse();
     component.toggle();
-    expect(component.isToggle).toBeTrue();
+    expect(component.openCloseToggle()).toBeTrue();
     component.toggle();
-    expect(component.isToggle).toBeFalse();
+    expect(component.openCloseToggle()).toBeFalse();
   });
 });

@@ -1,0 +1,32 @@
+:host {
+  font-family: "Gilroy-Regular", sans-serif;
+
+  *,
+  *::after,
+  *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+.aui-accordion {
+  padding: 12px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.aui-accordion-header {
+  display: flex;
+  justify-content: space-between;
+
+  .close {
+    transform: rotate(270deg);
+  }
+
+  .open {
+    transform: rotate(0deg);
+  }
+}

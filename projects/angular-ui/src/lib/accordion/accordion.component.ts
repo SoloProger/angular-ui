@@ -1,19 +1,24 @@
-import { Component, Input } from '@angular/core';
-import { NgIf } from '@angular/common';
+import { Component, effect, input, signal } from '@angular/core';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'aui-accordion[title]',
   templateUrl: 'accordion.component.html',
-  imports: [NgIf],
+  styleUrl: 'accordion.component.scss',
+  imports: [NgClass],
 })
 export class AccordionComponent {
-  @Input()
-  public title!: string;
+  public title = input.required<string>();
+  public isOpen = input(false);
+  public openCloseToggle = signal(false);
 
-  @Input()
-  public isToggle: boolean = false;
+  constructor() {
+    effect(() => {
+      this.openCloseToggle.set(this.isOpen());
+    });
+  }
 
-  public toggle() {
-    this.isToggle = !this.isToggle;
+  public toggle(): void {
+    this.openCloseToggle.set(!this.openCloseToggle());
   }
 }

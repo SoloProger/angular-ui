@@ -1,0 +1,20 @@
+<section class="aui-sidebar-container">
+  <aside
+    class="aui-sidebar"
+    [ngClass]="{
+      'aui-sidebar-open': isOpenClass,
+      'aui-sidebar-close': !isOpenClass,
+    }"
+  >
+    @if (isOpenClass) {
+      <ng-content select="[aui-sidebar-content]"></ng-content>
+      <div class="aui-sidebar-open-close-icon" (click)="openClose()">icon</div>
+    } @else {
+      <div class="aui-sidebar-open-close-icon" (click)="openClose()">icon</div>
+      <ng-content select="[aui-closed-sidebar-content]"></ng-content>
+    }
+  </aside>
+  <section class="aui-sidebar-content">
+    <ng-content></ng-content>
+  </section>
+</section>

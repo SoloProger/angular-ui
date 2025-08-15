@@ -3,7 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   HostBinding,
-  Input,
+  input,
   ViewEncapsulation,
 } from '@angular/core';
 import { componentSizes } from '../utils/component-sizes';
@@ -11,6 +11,7 @@ import { ComponentVariantType } from '../types/component-variant.type';
 import { ComponentSizeType } from '../types/component-size.type';
 import { componentVariants } from '../utils/component-variants';
 import { componentCursorPointer } from '../utils/component-cursor-pointer';
+import { ButtonType } from './types/buttonType';
 
 @Component({
   selector: 'aui-button',
@@ -20,33 +21,24 @@ import { componentCursorPointer } from '../utils/component-cursor-pointer';
   styleUrl: './button.component.scss',
 })
 export class ButtonComponent {
-  @Input()
-  public variant: ComponentVariantType = 'secondary';
-
-  @Input()
-  public validator = 'button';
-
-  @Input({ transform: booleanAttribute })
-  public disabled = false;
-
-  @Input()
-  public size: ComponentSizeType = 'medium';
-
-  @Input()
-  public fill = 'full';
+  public variant = input<ComponentVariantType>('primary');
+  public type = input<ButtonType>('button');
+  public disabled = input(false, { transform: booleanAttribute });
+  public size = input<ComponentSizeType>('medium');
+  public fill = input<'full'>('full');
 
   @HostBinding('class')
   public get btnClass() {
     return {
-      ...componentSizes(this.size, 'button'),
-      ...componentVariants(this.variant, 'button'),
+      ...componentSizes(this.size(), 'aui-button'),
+      ...componentVariants(this.variant(), 'aui-button'),
+      ...componentCursorPointer(this.disabled(), 'aui-button'),
       ...this.btnFill(),
-      ...componentCursorPointer(this.disabled, 'button'),
     };
   }
 
   public btnFill() {
-    return this.fill === 'full' && !this.disabled
+    return this.fill() === 'full' && !this.disabled
       ? { ['']: true }
       : { ['bg-transparent']: true };
   }
