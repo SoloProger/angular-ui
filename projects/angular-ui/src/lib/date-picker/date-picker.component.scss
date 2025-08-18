@@ -1,3 +1,15 @@
+:host {
+  font-family: "Gilroy-Regular", sans-serif;
+
+  *,
+  *::after,
+  *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
 .datepicker {
   display: inline-block;
   position: relative;
@@ -6,9 +18,9 @@
   color: #fff;
   padding: 20px;
 
-  &:active {
-    filter: drop-shadow(0px 4px 24px #3596fe7a);
-  }
+  //&:active {
+  //  filter: drop-shadow(0px 4px 24px #3596fe7a);
+  //}
 }
 
 .datepicker-toggle-btn {
@@ -26,7 +38,6 @@
   border: 2px solid #2b2b2e;
   background: #1d1d1e;
   padding: 24px;
-  box-shadow: 0 4px 24px 0 #0000003d;
   z-index: 1000;
   transition: all 0.3s ease;
 

@@ -20,7 +20,7 @@ const sizes = {
 };
 
 const meta: Meta<ButtonComponent> = {
-  title: 'Example/Button',
+  title: 'Components/Button',
   component: ButtonComponent,
   tags: ['autodocs'],
   argTypes: {

@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { Component, forwardRef, input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -14,12 +14,11 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ],
 })
 export class CheckboxComponent implements ControlValueAccessor {
-  @Input()
-  public label: string = '';
+  public label = input('');
 
   public inputFormValue: boolean = false;
 
-  public onChange = (inputFormValue: boolean) => {};
+  public onChange = () => {};
 
   public onTouched = () => {};
 
@@ -46,7 +45,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   public update(event: Event): void {
     const inputFormValue = (event.target as HTMLInputElement).checked;
     this.inputFormValue = inputFormValue;
-    this.onChange(inputFormValue);
+    this.onChange();
     this.onTouched();
   }
 }

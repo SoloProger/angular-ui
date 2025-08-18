@@ -6,7 +6,7 @@ import { range } from './utils/range';
 import { NgClass, NgForOf } from '@angular/common';
 
 @Component({
-  selector: 'aui-date-picker',
+  selector: 'aui-datepicker',
   templateUrl: './date-picker.component.html',
   styleUrl: 'date-picker.component.scss',
   imports: [NgClass, NgForOf],
@@ -20,9 +20,9 @@ export class DatePickerComponent implements ControlValueAccessor {
 
   public isDisabled = false;
 
-  public onChange = (date: unknown) => {};
+  public onChange: () => void = () => {};
 
-  public onTouch = () => {};
+  public onTouch: () => void = () => {};
 
   public writeValue(date: unknown): void {
     this.date = date;
@@ -33,7 +33,7 @@ export class DatePickerComponent implements ControlValueAccessor {
   }
 
   public registerOnTouched(fn: () => void): void {
-    this.onChange(fn);
+    this.onTouch = fn;
   }
 
   public setDisabledState(isDisabled: boolean): void {

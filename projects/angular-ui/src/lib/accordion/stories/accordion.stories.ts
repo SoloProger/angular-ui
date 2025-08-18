@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/angular';
 import { AccordionComponent } from '../accordion.component';
 
 const meta: Meta<AccordionComponent> = {
-  title: 'Example/Accordion',
+  title: 'Components/Accordion',
   component: AccordionComponent,
   tags: ['autodocs'],
 };

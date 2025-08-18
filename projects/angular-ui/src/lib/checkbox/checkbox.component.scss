@@ -1,10 +1,22 @@
+:host {
+  font-family: "Gilroy-Regular", sans-serif;
+
+  *,
+  *::after,
+  *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
 .checkbox {
   display: flex;
 }
 
 .label {
-  color: #bbb;
-  font-size: 16px;
+  color: #1d1d1e;
+  font-size: 14px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
